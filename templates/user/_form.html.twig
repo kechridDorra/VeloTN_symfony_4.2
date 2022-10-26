@@ -1,0 +1,36 @@
+
+{{ form_start(form) }}
+<div class="input-field col s12 m6 l6">
+	{{ form_label(form.email) }}&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;
+	{{ form_widget(form.email, {'attr': {'placeholder': 'Email'}}) }}
+
+	</div><br>
+<div class="input-field col s12 m6 l6">
+	{{ form_label(form.plainPassword) }}
+		{{ form_widget(form.plainPassword, {'attr': {'placeholder': 'password'}}) }}
+
+	</div><br>
+<div class="input-field col s12 m6 l6">
+	{{ form_label(form.nom) }}&emsp;&emsp;&emsp;&emsp;&emsp;
+		{{ form_widget(form.nom, {'attr': {'placeholder': 'nom'}}) }}
+
+	</div><br>
+<div class="input-field col s12 m6 l6">
+{{ form_label(form.prenom) }}&emsp;&emsp;&emsp;&nbsp;&nbsp;
+		{{ form_widget(form.prenom, {'attr': {'placeholder': 'prenom'}}) }}
+
+	</div><br>
+<div class="input-field col s12 m6 l6">
+{{ form_label(form.tel) }}&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;
+		{{ form_widget(form.tel, {'attr': {'placeholder': 'telephone'}}) }}
+
+	</div><br>
+<div class="input-field col s12 m6 l6">
+	{{ form_label(form.datenaissance) }}
+		{{ form_widget(form.datenaissance, {'attr': {'placeholder': 'date de naissance'}}) }}
+
+	</div><br>
+    {{ form_widget(form) }}
+<button class="btn">
+	{{ button_label|default('Enregistrer') }}</button><br>
+{{ form_end(form) }}

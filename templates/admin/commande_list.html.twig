@@ -1,0 +1,45 @@
+{% extends 'admin/baseAdmin.html.twig' %}
+
+{% block title %}Commande index{% endblock %}
+
+{% block body %}
+<br>
+<div class="container">
+    <center><h1> Liste des Commandes </h1></center>
+<br>
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Num commande</th>
+            <th>Date commande</th>
+            <th>Prix commande</th>
+            <th>Utilisateur</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for commande in commandes %}
+            <tr>
+                <td>{{ commande.id }}</td>
+                <td>{{ commande.numCommande }}</td>
+                <td>{{ commande.dateCommande ? commande.dateCommande|date('Y-m-d') : '' }}</td>
+                <td>{{ commande.prixCommande }}</td>
+                <td>{{ commande.user.username }}</td>
+                <td>
+                    <a href="{{ path('commande_show', {'id': commande.id}) }}">show</a>
+                    <a href="{{ path('commande_edit', {'id': commande.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('commande_new') }}">Create new</a>
+</div>
+    <br>
+{% endblock %}

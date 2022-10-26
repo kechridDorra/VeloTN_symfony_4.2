@@ -1,0 +1,12 @@
+{% extends 'admin/baseAdmin.html.twig' %}
+
+
+{% block body %}
+    <h1>Modifier Evenement</h1>
+
+    {{ include('admin/evenement/evenement_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('admin_evenement_list') }}">Retour à la liste</a>
+
+    {{ include('admin/evenement/evenement_delete.html.twig') }}
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends 'admin/baseAdmin.html.twig' %}
+
+{% block body %}
+    <br>
+    <div class="container">
+        <center> <h1>Liste des Velos</h1></center>
+<br>
+
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Description velo</th>
+            <th>Marque velo</th>
+            <th>Prix location</th>
+            <th>Propriétaire</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for velo in velos %}
+            <tr>
+                <td>{{ velo.id }}</td>
+                <td>{{ velo.DescriptionVelo }}</td>
+                <td>{{ velo.marqueVelo }}</td>
+                <td>{{ velo.prixLocVelo }}</td>
+
+                <td>{{ velo.user.username }}</td>
+                <td>
+                    <a href="{{ path('admin_velo_show', {'id': velo.id}) }}">show</a>
+                    <a href="{{ path('velo_edit', {'id': velo.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('velo_new') }}">Create new</a>
+    </div>
+    <br>
+{% endblock %}

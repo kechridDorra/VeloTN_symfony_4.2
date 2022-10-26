@@ -1,0 +1,40 @@
+{% extends 'admin/baseAdmin.html.twig' %}
+
+{% block body %}
+<br>
+<div class="container">
+    <center> <h1>Liste des Participations</h1></center>
+    <br>
+
+    <table class="table table-bordered">
+        <thead>
+        <tr> <th>Id</th>
+            <th>Nom participant</th>
+            <th>Evenement participé</th>
+            <th>Date participation</th>
+            <th>actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for participation in participations %}
+            <tr>
+                <td>{{ participation.id }}</td>
+                <td>{{ participation.user.username }}</td>
+                <td>{{ participation.evenement.getNomEvenement()}}</td>
+                <td>{{ participation.dateParticipation ? participation.dateParticipation|date('Y-m-d') : '' }}</td>
+                <td>
+                    <a href="{{ path('participation_show', {'id': participation.id}) }}">show</a>
+                    <a href="{{ path('participation_edit', {'id': participation.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('participation_new') }}">Create new</a>
+</div><br>
+    {% endblock %}

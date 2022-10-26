@@ -1,0 +1,47 @@
+{% extends 'admin/baseAdmin.html.twig' %}
+
+
+{% block body %}
+<br>
+<div class="container">
+    <center><h1> Liste des Produitss</h1></center>
+    <br>
+
+    <table class="table table-bordered">
+        <thead>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom_produit</th>
+                <th>Description_produit</th>
+                <th>Prix_produit</th>
+                <th>Marque_produit</th>
+                <th>Image_produit</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for produit in produits %}
+            <tr>
+                <td>{{ produit.id }}</td>
+                <td>{{ produit.nomProduit }}</td>
+                <td>{{ produit.descriptionProduit }}</td>
+                <td>{{ produit.prixProduit }}</td>
+                <td>{{ produit.marqueProduit }}</td>
+                <td>{{ produit.imageProduit }}</td>
+                <td>
+                    <a href="{{ path('produit_show', {'id': produit.id}) }}">Afficher</a>
+                    <a href="{{ path('produit_edit', {'id': produit.id}) }}">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('produit_new') }}">Ajouter Produit</a>
+</div>
+{% endblock %}

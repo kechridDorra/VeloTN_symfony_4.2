@@ -1,0 +1,50 @@
+{% extends 'admin/baseAdmin.html.twig' %}
+{% block body %}
+    <br>
+
+
+<center> <h1>Detail Evenement</h1></center>
+<form>
+    <center>
+        <div class="form-outline mb-4">
+            <div class="col-md-6">
+                <table class="table">
+                    <tbody>
+        <tr>
+            <th>Id</th>
+            <td>{{ evenement.id }}</td>
+        </tr>
+        <tr>
+            <th>Nom evenement</th>
+            <td>{{ evenement.nomEvenement }}</td>
+        </tr>
+        <tr>
+            <th>Date evenement</th>
+            <td>{{ evenement.dateEvenement ? evenement.dateEvenement|date('Y-m-d') : '' }}</td>
+        </tr>
+        <tr>
+            <th>Heure evenement</th>
+            <td>{{ evenement.heureEvenement }}</td>
+        </tr>
+        <tr>
+            <th>Description evenement</th>
+            <td>{{ evenement.descriptionEvenement }}</td>
+        </tr>
+        </tbody>
+                    </tbody>
+                </table>
+                <button class="btn btn-warning" href="{{ path('admin_evenement_list') }}"> Retour à la liste &nbsp</a>
+                </button>
+                <button class="btn btn-secondary"href="{{ path('admin_evenement_edit', {'id': evenement.id}) }}"> Modifier </a>
+                </button></div><br>
+            {{ include('admin/evenement/evenement_delete.html.twig') }}
+        </div>
+    </center></div></center>
+</form>
+    <br>
+
+    </table>
+            </div></div></center></form>
+
+
+{% endblock %}

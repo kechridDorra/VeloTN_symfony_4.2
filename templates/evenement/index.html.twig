@@ -1,0 +1,44 @@
+{% extends 'admin/baseAdmin.html.twig' %}
+
+
+{% block body %}
+<br>
+<div class="container">
+    <center><h1> Liste des Evenements</h1></center>
+    <br>
+
+    <table class="table table-bordered">
+        <thead>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom_evenement</th>
+                <th>Date_evenement</th>
+                <th>Heure_evenement</th>
+                <th>Description_evenement</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for evenement in evenements %}
+            <tr>
+                <td>{{ evenement.id }}</td>
+                <td>{{ evenement.nomEvenement }}</td>
+                <td>{{ evenement.dateEvenement ? evenement.dateEvenement|date('Y-m-d') : '' }}</td>
+                <td>{{ evenement.heureEvenement }}</td>
+                <td>{{ evenement.descriptionEvenement }}</td>
+                <td>
+                    <a href="{{ path('evenement_show', {'id': evenement.id}) }}">Afficher</a>
+                    <a href="{{ path('evenement_edit', {'id': evenement.id}) }}">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('evenement_new') }}">Ajouter Evenement</a></div>
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends 'admin/baseAdmin.html.twig' %}
+
+{% block body %}
+    <br>
+    <div class="container">
+        <center> <h1>Liste des Locations</h1></center>
+        <br>
+
+        <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Date location</th>
+            <th>Heure location</th>
+            <th>Velo </th>
+            <th>Utilisateur </th>
+
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for location in locations %}
+            <tr>
+                <td>{{ location.id }}</td>
+                <td>{{ location.dateLocation ? location.dateLocation|date('Y-m-d') : '' }}</td>
+                <td>{{ location.heureLocation }}</td>
+                <td>{{ location.velos.getDescriptionVelo() }}</td>
+                <td>{{ location.user.username }}</td>
+                <td>
+                    <a href="{{ path('location_show', {'id': location.id}) }}">show</a>
+                    <a href="{{ path('location_edit', {'id': location.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('location_new') }}">Create new</a>
+    </div><br>
+{% endblock %}

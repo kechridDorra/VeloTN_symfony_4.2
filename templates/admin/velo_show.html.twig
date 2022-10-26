@@ -1,0 +1,36 @@
+{% extends 'admin/baseAdmin.html.twig' %}
+
+{% block body %}
+    <br>
+    <div class="container">
+        <h1>Velo</h1>
+
+        <table class="table">
+            <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ velo.id }}</td>
+            </tr>
+            <tr>
+                <th>Description_velo</th>
+                <td>{{ velo.DescriptionVelo }}</td>
+            </tr>
+            <tr>
+                <th>Marque_velo</th>
+                <td>{{ velo.marqueVelo }}</td>
+            </tr>
+            <tr>
+                <th>Prix_loc_velo</th>
+                <td>{{ velo.prixLocVelo }}</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <a href="{{ path('velo_index') }}">back to list</a>
+
+        <a href="{{ path('velo_edit', {'id': velo.id}) }}">edit</a>
+
+        {{ include('velo/_delete_form.html.twig') }}
+    </div>
+    <br>
+{% endblock %}

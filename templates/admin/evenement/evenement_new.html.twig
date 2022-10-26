@@ -1,0 +1,8 @@
+{% extends 'admin/baseAdmin.html.twig' %}
+{% block body %}
+    <h1>Creer Evenement</h1>
+
+    {{ include('admin/evenement/evenement_form.html.twig') }}
+
+    <a href="{{ path('admin_evenement_list') }}">back to list</a>
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends 'admin/baseAdmin.html.twig' %}
+
+
+{% block body %}
+<br>
+<div class="container">
+    <center><h1> Liste des Vélos</h1></center>
+    <br>
+
+    <table class="table table-bordered">
+        <thead>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Description_velo</th>
+                <th>Marque_velo</th>
+                <th>Prix_loc_velo</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for velo in velos %}
+            <tr>
+                <td>{{ velo.id }}</td>
+                <td>{{ velo.DescriptionVelo }}</td>
+                <td>{{ velo.marqueVelo }}</td>
+                <td>{{ velo.prixLocVelo }}</td>
+                <td>
+                    <a href="{{ path('velo_show', {'id': velo.id}) }}">Afficher</a>
+                    <a href="{{ path('velo_edit', {'id': velo.id}) }}">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('velo_new') }}">Ajouter Velo</a></div>
+{% endblock %}
